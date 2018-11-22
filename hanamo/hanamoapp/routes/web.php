@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('product_group', 'ProductGroups@viewProductGroups');
+Route::resource('product_groups','ProductGroups');
+// Route::get('/product_group', 'ProductGroups@viewProductGroups');
+// Route::resource('product_groups','ProductGroups');
