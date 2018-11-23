@@ -11,14 +11,25 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js') }}" defer></script>
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js') }}" defer></script>
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.3.1/jquery.twbsPagination.min.js') }}" defer></script>
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js') }}" defer></script>
+    <script src="{{ asset('//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js') }}" defer></script>
+    <script src="{{ asset('/js/product.js') }}" defer></script> 
+    <script src="{{ asset('/js/product_group.js') }}" defer></script> 
+    <script src="{{ asset('/js/inventory.js') }}" defer></script> 
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css') }}" rel="stylesheet">
 </head>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">

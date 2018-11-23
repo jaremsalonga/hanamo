@@ -18,7 +18,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('product_group', 'ProductGroups@viewProductGroups');
 Route::resource('product_groups','ProductGroups');
-// Route::get('/product_group', 'ProductGroups@viewProductGroups');
-// Route::resource('product_groups','ProductGroups');
+
+Route::get('product', 'Products@viewProducts');
+Route::resource('products','Products');
+
+Route::get('inventory', 'Inventory@viewInventory');
+Route::resource('inventories','Inventory');
+
+Route::get('importExport', 'LaravelExcel@importExport');
+Route::get('downloadExcel/{type}', 'LaravelExcel@downloadExcel');
+Route::post('importExcel', 'LaravelExcel@importExcel');

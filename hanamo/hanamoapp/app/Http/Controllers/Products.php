@@ -3,28 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\MInventory;
-use Gate;
+use App\MProducts;
 
-class Inventory extends Controller
+class Products extends Controller
 {
-    /**
+   /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function viewInventory()
+
+    public function viewProducts()
     {
-        if(!Gate::allows('isAdmin')){
-            abort(404);
-        }
-        return view('inventory.inventories');
+        return view('products.product');
     }
 
     public function index()
     {
         //
-        $posts = MInventory::latest()->paginate(20);
+        $posts = MProducts::latest()->paginate(5);
         return response()->json($posts);
     }
 
@@ -47,6 +44,9 @@ class Inventory extends Controller
     public function store(Request $request)
     {
         //
+        $post = MProducts::create($request->all());
+        
+        return response()->json($post);
     }
 
     /**
@@ -81,9 +81,8 @@ class Inventory extends Controller
     public function update(Request $request, $id)
     {
         //
-        $post = MInventory::find($id)->update($request->all());
+        $post = MProducts::find($id)->update($request->all());
         return response()->json($post);
-    
     }
 
     /**
@@ -95,5 +94,7 @@ class Inventory extends Controller
     public function destroy($id)
     {
         //
+        MProducts::find($id)->delete();
+        return response()->json(['done']);
     }
 }

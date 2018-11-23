@@ -20,19 +20,9 @@
   
                     <div class="form-group">
   
-                      <label class="control-label" for="title">Title:</label>
+                      <label class="control-label" for="title">Product Group ID:</label>
   
-                      <input type="text" name="title" class="form-control" data-error="Please enter title." required />
-  
-                      <div class="help-block with-errors"></div>
-  
-                  </div>
-  
-                  <div class="form-group">
-  
-                      <label class="control-label" for="title">Description:</label>
-  
-                      <textarea name="details" class="form-control" data-error="Please enter details." required></textarea>
+                      <input type="text" name="title" class="form-control" data-error="Please enter ID." required />
   
                       <div class="help-block with-errors"></div>
   
@@ -40,7 +30,17 @@
   
                   <div class="form-group">
   
-                      <button type="submit" class="btn btn-success crud-submit-edit">Submit</button>
+                      <label class="control-label" for="title">Product Name:</label>
+  
+                      <textarea name="details" class="form-control" data-error="Please enter product name." required></textarea>
+  
+                      <div class="help-block with-errors"></div>
+  
+                  </div>
+  
+                  <div class="form-group">
+  
+                      <button type="submit" id="inventory" class="btn btn-success crud-submit-edit">Submit</button>
   
                   </div>
   

@@ -9,14 +9,14 @@ var is_ajax_fire = 0;
 
 
 
-manageData();
+manageDataProductGroup();
 
 
 
 
 /* manage data list */
 
-function manageData() {
+function manageDataProductGroup() {
 
 
 
@@ -38,7 +38,7 @@ function manageData() {
 
 
 
-    	$('#pagination').twbsPagination({
+    	$('#pagination-product-group').twbsPagination({
 
 	        totalPages: total_page,
 
@@ -50,7 +50,7 @@ function manageData() {
 
                 if(is_ajax_fire != 0){
 
-	        	  getPageData();
+	        	  getPageDataProductGroup();
 
                 }
 
@@ -60,7 +60,7 @@ function manageData() {
 
 
 
-    	manageRow(data.data);
+    	manageRowProductGroup(data.data);
 
         is_ajax_fire = 1;
 
@@ -86,7 +86,7 @@ $.ajaxSetup({
 
 /* Get Page Data*/
 
-function getPageData() {
+function getPageDataProductGroup() {
 
 	$.ajax({
 
@@ -98,7 +98,7 @@ function getPageData() {
 
 	}).done(function(data){
 
-		manageRow(data.data);
+		manageRowProductGroup(data.data);
 
 	});
 
@@ -109,8 +109,9 @@ function getPageData() {
 
 /* Add new Post table row */
 
-function manageRow(data) {
+function manageRowProductGroup(data) {
 
+    console.log(data);
 	var	rows = '';
 
 	$.each( data, function( key, value ) {
@@ -133,7 +134,7 @@ function manageRow(data) {
 
 	});
 
-	$("tbody").html(rows);
+	$("tbody.product-group").html(rows);
 
 }
 
@@ -142,33 +143,21 @@ function manageRow(data) {
 
 /* Create new Post */
 
-$(".crud-submit").click(function(e){
-
+$("#product-group-create").click(function(e){
     e.preventDefault();
-
     var form_action = $("#create-item").find("form").attr("action");
-    var details = $("#create-item").find("textarea[name='details']").val();
-
-
-
+    var details = $('#product-group-desc').val()
     $.ajax({
-
         dataType: 'json',
-
         type:'POST',
-
         url: form_action,
-
         data:{name:details}
-
     }).done(function(data){
-
-        getPageData();
-
+        console.log('done')
+        getPageDataProductGroup();
         $(".modal").modal('hide');
-
         toastr.success('Post Created Successfully.', 'Success Alert', {timeOut: 5000});
-
+        $('.modal-backdrop').remove();
     });
 
 });
@@ -199,10 +188,10 @@ $("body").on("click",".remove-item",function(){
 
 
         c_obj.remove();
-
+        $('.modal-backdrop').remove();
         toastr.success('Post Deleted Successfully.', 'Success Alert', {timeOut: 5000});
 
-        getPageData();
+        getPageDataProductGroup();
 
 
 
@@ -238,33 +227,19 @@ $("body").on("click",".edit-item",function(){
 
 /* Updated new Post */
 
-$(".crud-submit-edit").click(function(e){
-
+$("#product-group-edit").click(function(e){
     e.preventDefault();
-
     var form_action = $("#edit-item").find("form").attr("action");
-
-
-    var details = $("#edit-item").find("textarea[name='details']").val();
-
-
-
+    var details = $("#edit-item").find("textarea[name='details']:visible").val();
     $.ajax({
-
         dataType: 'json',
-
         type:'PUT',
-
         url: form_action,
-
         data:{name:details}
-
     }).done(function(data){
-
-        getPageData();
-
+        getPageDataProductGroup();
         $(".modal").modal('hide');
-
+        $('.modal-backdrop').remove();
         toastr.success('Post Updated Successfully.', 'Success Alert', {timeOut: 5000});
 
     });

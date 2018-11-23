@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\MProductGroups;
+use Gate;
 
 class ProductGroups extends Controller
 {
@@ -15,13 +16,17 @@ class ProductGroups extends Controller
 
     public function viewProductGroups()
     {
-        return view('product_group');
+        if(!Gate::allows('isAdmin')){
+            abort(404);
+        }
+        return view('product_groups.product_group');
     }
 
     public function index()
     {
         //
-        $posts = MProductGroups::latest()->paginate(5);
+        
+        $posts = MProductGroups::latest()->paginate(20);
         return response()->json($posts);
     }
 
@@ -57,6 +62,7 @@ class ProductGroups extends Controller
     public function show($id)
     {
         //
+       
     }
 
     /**
