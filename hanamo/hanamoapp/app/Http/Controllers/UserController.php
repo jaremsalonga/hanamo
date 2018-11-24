@@ -3,26 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\MInventory;
-use Gate;
+use App\User;
 
-class Inventory extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function viewInventory()
+    public function viewUser()
     {
-
-        return view('inventory.inventories');
+        return view('user.users');
     }
 
     public function index()
     {
         //
-        $posts = MInventory::latest()->paginate(20);
+        $posts = User::latest()->paginate(5);
         return response()->json($posts);
     }
 
@@ -79,9 +77,8 @@ class Inventory extends Controller
     public function update(Request $request, $id)
     {
         //
-        $post = MInventory::find($id)->update($request->all());
+        $post = User::find($id)->update($request->all());
         return response()->json($post);
-    
     }
 
     /**

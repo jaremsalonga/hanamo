@@ -5,7 +5,7 @@
 		<div class="row">
 		    <div class="col-lg-12 margin-tb">					
 		        <div class="pull-left">
-		            <h2>Inventory</h2>
+		            <h2>Users</h2>
 		        </div>
 		    </div>
 		</div>
@@ -13,23 +13,22 @@
 		<table class="table table-bordered">
 			<thead>
 			    <tr>
-				<th>Product ID:</th>
-				<th>Stocks:</th>
+				<th>Email Address:</th>
+				<th>Role ID:</th>
 				<th width="200px">Action</th>
 			    </tr>
 			</thead>
-			<tbody class="inventories">
+			<tbody class="users">
 			</tbody>
 		</table>
 
-		<ul id="pagination-inventory" class="pagination-sm"></ul>
-		<!-- Create Item Modal -->
+		<ul id="pagination-users" class="pagination-sm"></ul>
 		<!-- Edit Item Modal -->
-		@include('inventory.edit')
+		@include('user.edit')
 	</div>
 
 	@endsection
 	<script type="text/javascript">
-		var url = "<?php echo route('inventories.index')?>";
+		var url = "<?php echo route('users.index')?>";
 	</script>
 	

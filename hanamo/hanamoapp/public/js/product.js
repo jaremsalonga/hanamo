@@ -108,15 +108,13 @@ function manageRow(data) {
 	  	rows = rows + '<tr>';
 	  	rows = rows + '<td>'+value.product_group_id+'</td>';
 	  	rows = rows + '<td>'+value.name+'</td>';
-        if($('#navbarDropdown').text().trim() == 'Administrator'){
+        if($('#role_id').val().trim() == 'admin'){
             rows = rows + '<td data-id="'+value.id+'">';
             rows = rows + '<button data-toggle="modal" data-target="#edit-item" class="btn btn-primary edit-item">Edit</button> ';
             rows = rows + '<button class="btn btn-danger remove-item">Delete</button>';
             rows = rows + '</td>';
         }
-
 	  	rows = rows + '</tr>';
-
 	});
 	$("tbody.products").html(rows);
 }

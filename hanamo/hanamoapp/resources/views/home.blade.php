@@ -19,8 +19,8 @@
                     <div class="list-group">
                         <a href="/product" class="list-group-item">Product</a>
                         <a href="/product_group" class="list-group-item">Product Group</a>
-                        <a href="/users" class="list-group-item">User</a>
-                        <a href="/importexcel" class="list-group-item">Import/Export Excel</a>
+                        <a href="/user" class="list-group-item">User</a>
+                        <a href="/importExport" class="list-group-item">Import/Export Excel</a>
                     </div>
                     @else
                     <div class="list-group">

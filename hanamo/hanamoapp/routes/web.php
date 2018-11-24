@@ -28,6 +28,9 @@ Route::resource('products','Products');
 Route::get('inventory', 'Inventory@viewInventory');
 Route::resource('inventories','Inventory');
 
+Route::get('user', 'UserController@viewUser');
+Route::resource('users','UserController');
+
 Route::get('importExport', 'LaravelExcel@importExport');
 Route::get('downloadExcel/{type}', 'LaravelExcel@downloadExcel');
 Route::post('importExcel', 'LaravelExcel@importExcel');

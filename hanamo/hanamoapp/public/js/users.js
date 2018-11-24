@@ -1,5 +1,5 @@
 $(function(){
-    manageDataInventory();
+    manageDataUsers();
 });
 
 var page = 1;
@@ -13,7 +13,7 @@ var is_ajax_fire = 0;
 
 /* manage data list */
 
-function manageDataInventory() {
+function manageDataUsers() {
 
 
 
@@ -31,7 +31,7 @@ function manageDataInventory() {
         
         current_page = data.current_page;
         
-    	$('#pagination-inventory').twbsPagination({
+    	$('#pagination-users').twbsPagination({
 
 	        totalPages: total_page,
 
@@ -43,14 +43,14 @@ function manageDataInventory() {
 
                 if(is_ajax_fire != 0){
 
-                    getPageDataInventory();
+	        	  getPageData();
 
                 }
 
 	        }
 
 	    });
-    	manageRowInventory(data.data);
+    	manageRowUsers(data.data);
         is_ajax_fire = 1;
     });
 }
@@ -73,7 +73,7 @@ $.ajaxSetup({
 
 /* Get Page Data*/
 
-function getPageDataInventory() {
+function getPageDataUsers() {
 
 	$.ajax({
 
@@ -85,7 +85,7 @@ function getPageDataInventory() {
 
 	}).done(function(data){
 
-		manageRowInventory(data.data);
+		manageRowUsers(data.data);
 
 	});
 
@@ -96,18 +96,18 @@ function getPageDataInventory() {
 
 /* Add new Post table row */
 
-function manageRowInventory(data) {
+function manageRowUsers(data) {
 	var	rows = '';
 	$.each( data, function( key, value ) {
 	  	rows = rows + '<tr>';
-	  	rows = rows + '<td>'+value.product_id+'</td>';
-	  	rows = rows + '<td>'+value.in_stock+'</td>';
+	  	rows = rows + '<td>'+value.email+'</td>';
+	  	rows = rows + '<td>'+value.role_id+'</td>';
         rows = rows + '<td data-id="'+value.id+'">';
         rows = rows + '<button data-toggle="modal" data-target="#edit-item" class="btn btn-primary edit-item">Edit</button> ';
         rows = rows + '</td>';
 	  	rows = rows + '</tr>';
 	});
-	$("tbody.inventories").html(rows);
+	$("tbody.users").html(rows);
 }
 /* Edit Post */
 
@@ -125,7 +125,7 @@ $("body").on("click",".edit-item",function(){
 
 
 /* Updated new Post */
-$("#inventory-edit").click(function(e){
+$("#users-edit").click(function(e){
     e.preventDefault();
     var form_action = $("#edit-item").find("form").attr("action");
     var details = $("#edit-item").find("input[name='details']").val();
@@ -133,9 +133,9 @@ $("#inventory-edit").click(function(e){
         dataType: 'json',
         type:'PUT',
         url: form_action,
-        data:{in_stock:details}
+        data:{role_id:details}
     }).done(function(data){
-        getPageDataInventory();
+        getPageDataUsers();
         $(".modal").modal('hide');
         toastr.success('Post Updated Successfully.', 'Success Alert', {timeOut: 5000});
         $('.modal-backdrop').remove();

@@ -19,6 +19,7 @@
     <script src="{{ asset('/js/product.js') }}" defer></script> 
     <script src="{{ asset('/js/product_group.js') }}" defer></script> 
     <script src="{{ asset('/js/inventory.js') }}" defer></script> 
+    <script src="{{ asset('/js/users.js') }}" defer></script> 
 
 
     <!-- Fonts -->
@@ -64,6 +65,8 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
+                                
+                                <input type="hidden" id="role_id" value={{ Auth::user()->role_id }}> 
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
